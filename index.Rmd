@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Reproducible Science"
-subtitle: "Version Control using Git"
+subtitle: "Version Control using Git and Github"
 author: "<br><br><br><br>François Leroy"
 institute: "Czech Univeristy of Life Sciences<br>Prague"
 # date: "2016/12/12 (updated: `r Sys.Date()`)"
@@ -17,101 +17,7 @@ output:
       titleSlideClass: [top, left, inverse]
 ---
 
-
-# Why is reproducible science important?
-
-
-.pull-left[
-<br><br>
-- Paper by Reinhart & Rogoff (2010)
-
-- Link between debt and GDP growth
-
-- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
-
-- Used as an argument for politic decisions
-
-
-]
-
-
-.pull-right[
-```{r, echo=F}
-knitr::include_graphics("images/rr_article.PNG")
-```
-
-```{r, echo=F, out.width="90%"}
-knitr::include_graphics("images/rr_barplot.PNG")
-```
-]
-
-
-
----
-# Why is reproducible science important?
-
-
-.pull-left[
-<br><br>
-- Paper by Reinhart & Rogoff (2010)
-
-- Link between debt and GDP growth
-
-- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
-
-- Used as an argument for politic decisions
-<br><br><br>
-.center[
-CALCULATION ERROR!
-
-ARBITRARY DECISIONS!
-]
-]
-
-
-.pull-right[
-```{r, echo=F}
-knitr::include_graphics("images/rr_article.PNG")
-```
-
-```{r, echo=F, out.width="90%"}
-knitr::include_graphics("images/rr_barplot.PNG")
-```
-]
----
-
-# Advantages of Reproducible Science
-<br><br>
-- Share your results
-
-- Work with collaborators
-
-- Avoid mistakes
-
-- Peer reviewing
-
-
-???
-
-The means have been computed in a weird way.
-
-They didn't use some data that had a high GDP growth with a debt higher than a 100% (we don't know why)
-
-The most important: there was as mistake in on of the excel formula 
-
-After correction: 2.2% instead of the 0%
-
-
---
-
-<br><br>
-.center[
-**All of this using Git/Github/Gitlab**
-]
-
----
-
-# What is (G)it?
+# Version control: what is (G)it?
 
 **Version Control:**
 
@@ -122,17 +28,16 @@ websites or other collection of information*
 
 --
 
-<br><br>
+<br>
+- Git was created Linus Torvalds in 2005
+
 - You can backup **versions** (*i.e.* "snapshots") of a file/directory
 
 - A version is called a **commit**
 
 - Each commit is identified by a unique **tag** and a **message**
 
-
 --
-
-
 
 .pull-left[
 <br><br>
@@ -160,17 +65,18 @@ knitr::include_graphics("images/version_control.jpg")
 
 <br><br>
 
-- You can send your files and their versions online = **push**
+- You can send your files and their versions online
 
 --
 
 <br>
-- Safe way to store your data
+- Essential for collaboration/teamwork
 
 --
 
 <br>
-- Essential for teamwork
+- Safe way to store your data/work on several devices
+
 
 ---
 class: inverse, center, middle
@@ -183,7 +89,7 @@ class: inverse, center, middle
 # Initialize your repository
 
 <br>
-- A **repository** is the directory where the versions of your project will be stored
+- **Repository** = directory where the versions of the files will be managed by Git
 
 --
 
@@ -265,38 +171,32 @@ knitr::include_graphics("images/branch.png")
 - At first, you will just see the branch `master`
 
 ``` 
-
 git branch 
   * master
-
 ```
 
-
-
-<br>
 - You can create new branches
 
-``` 
-
+```
 git branch new_branch_name
-
 ```
 
-
-
-<br>
 - And switch between branches
 
 
 ``` 
-
 git checkout name_branch
 Switched to branch 'name_branch'
+```
+- **Most importantly, you can merge branches together**
 
+From the `main` branch, use:
+
+```
+git merge new_branch
 ```
 
 ]
-
 
 ---
 
@@ -328,33 +228,24 @@ git reflog
 # Undo your commits
 
 .center[
-**There are a lot a different ways to do it     **
+**There are different ways to do it but the most common one is reset**
 ]
 
 --
 
-- `git revert` is the safest and easiest way: it creates a new commit that does the opposite of the commit indicated
-
-``` 
-
-git revert <SHA>*
-
-```
-
-.footnote[
-[*] SHA = Simple Hashing Algorithm = unique id of your commit
-]
-
---
-
-- `git reset` is more dangerous: you go back to the desired commit and "erase" all the commit created since 
+- `git reset` is dangerous: you go back to the desired commit and "erase" all the commit created since 
 
 ```
 
 git reset --hard <SHA>
-# Followed by
-git reset --soft <SHA>
 
+```
+
+However, you can bypass this by using:
+
+```
+git reset --hard <previous-SHA>
+git reset --soft <last-SHA>
 ```
 
 --
@@ -373,6 +264,98 @@ class: inverse, center, middle
 
 # Github
 
+## A powerful tool for reproducible science
+
+---
+
+# Why is reproducible science important?
+
+
+.pull-left[
+<br><br>
+- Paper by Reinhart & Rogoff (2010)
+
+- Link between debt and GDP growth
+
+- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
+
+- Used as an argument for politic decisions
+
+
+]
+
+
+.pull-right[
+```{r, echo=F}
+knitr::include_graphics("images/rr_article.PNG")
+```
+
+```{r, echo=F, out.width="90%"}
+knitr::include_graphics("images/rr_barplot.PNG")
+```
+]
+
+---
+# Why is reproducible science important?
+
+
+.pull-left[
+<br><br>
+- Paper by Reinhart & Rogoff (2010)
+
+- Link between debt and GDP growth
+
+- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
+
+- Used as an argument for politic decisions
+<br><br><br>
+.center[
+CALCULATION ERROR!
+
+ARBITRARY DECISIONS!
+]
+]
+
+
+.pull-right[
+```{r, echo=F}
+knitr::include_graphics("images/rr_article.PNG")
+```
+
+```{r, echo=F, out.width="90%"}
+knitr::include_graphics("images/rr_barplot.PNG")
+```
+]
+---
+
+# Advantages of Reproducible Science
+<br><br>
+- Share your results
+
+- Work with collaborators
+
+- Avoid mistakes
+
+- Peer reviewing
+
+
+???
+
+The means have been computed in a weird way.
+
+They didn't use some data that had a high GDP growth with a debt higher than a 100% (we don't know why)
+
+The most important: there was as mistake in on of the excel formula 
+
+After correction: 2.2% instead of the 0%
+
+
+--
+
+<br><br>
+.center[
+**All of this using Git/Github/Gitlab**
+]
 
 ---
 
@@ -408,9 +391,11 @@ git push -u origin main
 ```
 
 --
-<br><br>
+<br>
 .center[
 **From now on, you will be able to publish your commits using** `git push`
+
+**Also, you can dowload the modifications that are published on Github by using** `git pull`
 ]
 
 ---
@@ -444,6 +429,19 @@ git clone https://github.com/user_name/repo_name.git
 
 ---
 
+# Forking a github repository
+
+- A fork is a personal copy of a github repository
+
+<br><br>
+
+- It create a new independent repository that you can modify as much as you want, without modifying the original repo
+
+<br><br>
+
+- Also, you can ask to merge your modifications to the original repo using a `pull request`
+
+---
 
 # Github pages
 
@@ -466,6 +464,15 @@ git clone https://github.com/user_name/repo_name.git
 <br>
 
 - Github will automatically look for a file named `index.html` to build from
+
+---
+class: inverse, center, middle
+
+# Friendly user applications
+
+### [<ins>Github desktop</ins>](https://desktop.github.com/) 
+
+### [<ins>Visual Studio Code</ins>](https://code.visualstudio.com/)
 
 ---
 class: inverse, center, middle
