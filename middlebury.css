@@ -124,9 +124,9 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 
 /* Add image and change bg color */
 .title-slide {
-  background-image: url(images/czu_logo.jpg), url(images/versioncontrol.png);
-  background-position: 50px 5%, right;
-  background-size: 100px, 38% 100%;
+  background-image: url(images/cover_bigger1.jpg), url(images/czu_logo.png), url(images/versioncontrol.png);
+  background-position: 155px -3%, 375px 93%, right;
+  background-size: 275px, 150px, 38% 100%;
   background-color: #fff;
   padding-left: 100px;  /* delete this for 4:3 aspect ratio */
 }
@@ -135,7 +135,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 /* H1 fonts */
 .title-slide h1 {
   color: #0D395F; /* Middlebury blue */
-  padding-top: 250px;
+  padding-top: 260px;
   font-weight: normal;
   font-size: 45px;
   text-align: left;
