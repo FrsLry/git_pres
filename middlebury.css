@@ -125,7 +125,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 /* Add image and change bg color */
 .title-slide {
   background-image: url(images/cover_bigger1.jpg), url(images/czu_logo.png), url(images/versioncontrol.png);
-  background-position: 155px -3%, 375px 93%, right;
+  background-position: 155px 3%, 375px 93%, right;
   background-size: 275px, 150px, 38% 100%;
   background-color: #fff;
   padding-left: 100px;  /* delete this for 4:3 aspect ratio */

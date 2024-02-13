@@ -29,13 +29,14 @@ websites or other collection of information*
 --
 
 <br>
+
 - Git was created Linus Torvalds in 2005
 
-- You can backup **versions** (*i.e.* "snapshots") of a file/directory
+- You can backup versions (or "saves", like in a videogame) of a file/directory
 
 - A version is called a **commit**
 
-- Each commit is identified by a unique **tag** and a **message**
+- Each commit is identified by a unique tag and a message
 
 --
 
@@ -54,29 +55,126 @@ knitr::include_graphics("images/version_control.jpg")
 ]
 
 ---
+class: inverse, center, middle
 
-# What is Github?
+# Github
 
-.center[
-**The online version of Git**
+## A powerful tool for reproducible science
+
+---
+
+# Why is reproducible science important?
+
+
+.pull-left[
+<br><br>
+- Paper by Reinhart & Rogoff (2010)
+
+- Link between debt and GDP growth
+
+- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
+
+- Used as an argument for politic decisions
+
+
 ]
+
+
+.pull-right[
+```{r, echo=F}
+knitr::include_graphics("images/rr_article.PNG")
+```
+
+```{r, echo=F, out.width="90%"}
+knitr::include_graphics("images/rr_barplot.PNG")
+```
+]
+
+---
+
+# Why is reproducible science important?
+
+
+.pull-left[
+<br><br>
+- Paper by Reinhart & Rogoff (2010)
+
+- Link between debt and GDP growth
+
+- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
+
+- Used as an argument for politic decisions
+<br><br><br>
+.center[
+CALCULATION ERROR!
+
+ARBITRARY DECISIONS!
+]
+]
+
+
+.pull-right[
+```{r, echo=F}
+knitr::include_graphics("images/rr_article.PNG")
+```
+
+```{r, echo=F, out.width="90%"}
+knitr::include_graphics("images/rr_barplot.PNG")
+```
+]
+
+---
+
+# Pros of Reproducible Science
+<br><br>
+
+- **Transparency**: data, code and methods available allow verification
+
+- **Quality assurance**: identification and correction make results more reliable
+
+- **Facilitate collaborations**: see what are colleagues doing 
+
+- **Peer review**
+
+- **Educational value**
+
+- **Enhanced public trust**
+
+???
+
+The means have been computed in a weird way.
+
+They didn't use some data that had a high GDP growth with a debt higher than a 100% (we don't know why)
+
+The most important: there was as mistake in on of the excel formula 
+
+After correction: 2.2% instead of the 0%
+
 
 --
 
 <br><br>
+.center[
+**All of this using Git/Github/Gitlab**
+]
 
-- You can send your files and their versions online
+---
 
---
+# Github
 
-<br>
-- Essential for collaboration/teamwork
+- **Online platform**: this is (just) the online version of Git. If you want to understand Github, you need first to understand Git
 
---
+- **Repository hosting**: you can store and manage your files and their versions from any device
 
-<br>
-- Safe way to store your data/work on several devices
+- **Collaborative features**: people can suggest modifications of your code (pull request)
 
+- **Issues tracking**
+
+- **Branching and merging between collaborators**
+
+- **Code review**
+
+- **Github pages**: create and host your website directly from a repository
 
 ---
 class: inverse, center, middle
@@ -89,7 +187,7 @@ class: inverse, center, middle
 # Initialize your repository
 
 <br>
-- **Repository** = directory where the versions of the files will be managed by Git
+- **Repository** ("repo") = directory that is version-controlled by Git, with files and history of their changes
 
 --
 
@@ -155,8 +253,11 @@ git commit -m "Commit message"  # if you want to write directly the commit messa
 
 # Branches
 
+
+**Branch** = parallel line of development that diverges from the main line ("main" branch). Branches are used to isolate changes and work on new features or fixes without affecting the main codebase.
+
 .pull-left[
-<br><br><br><br><br>
+<br><br>
 ```{r, echo=F}
 
 knitr::include_graphics("images/branch.png")
@@ -168,11 +269,11 @@ knitr::include_graphics("images/branch.png")
 
 .pull-right[
 
-- At first, you will just see the branch `master`
+- At first, you will just see the branch `main`
 
 ``` 
 git branch 
-  * master
+  * main
 ```
 
 - You can create new branches
@@ -188,7 +289,26 @@ git branch new_branch_name
 git checkout name_branch
 Switched to branch 'name_branch'
 ```
-- **Most importantly, you can merge branches together**
+
+]
+
+---
+
+
+# Merge and conflicts
+
+.pull-left[
+<br><br><br><br><br>
+```{r, echo=F}
+
+knitr::include_graphics("images/branch.png")
+
+```
+]
+
+.pull-right[
+
+- **Merge** branches together
 
 From the `main` branch, use:
 
@@ -196,13 +316,22 @@ From the `main` branch, use:
 git merge new_branch
 ```
 
+This combines changes from both branches into a new commit
+
+- **Conflicts**: if a file is modified on two branches, Git can't decide which change to keep when merging, causing a **conflict**. 
+
+To resolve conflicts, manually edit the conflicted file, stage it with `git add`, continue the merge with `git merge --continue`, and commit the merge.
+
 ]
+
 
 ---
 
-# Check your commits
+# Check your commits and changes
 
-- Using:
+<br><br>
+
+- List the commits using:
 
 ``` 
 
@@ -210,6 +339,18 @@ git log             # or
 git log --oneline   # or
 git reflog
 
+```
+
+You'll see the SHA (Simple Hashing Algorithm = unique id of your commit), the author, date/time, commit message
+
+--
+
+<br><br>
+
+- See the changes of a commit:
+
+```
+git show <SHA>
 ```
 
 
@@ -249,10 +390,6 @@ git checkout <SHA>
 
 ```
 
-.footnote[
-[*] SHA = Simple Hashing Algorithm = unique id of your commit
-]
-
 ---
 
 # Useful tips
@@ -273,100 +410,9 @@ git checkout <SHA>
 ---
 class: inverse, center, middle
 
-# Github
+# Moving on to 
 
-## A powerful tool for reproducible science
-
----
-
-# Why is reproducible science important?
-
-
-.pull-left[
-<br><br>
-- Paper by Reinhart & Rogoff (2010)
-
-- Link between debt and GDP growth
-
-- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
-
-- Used as an argument for politic decisions
-
-
-]
-
-
-.pull-right[
-```{r, echo=F}
-knitr::include_graphics("images/rr_article.PNG")
-```
-
-```{r, echo=F, out.width="90%"}
-knitr::include_graphics("images/rr_barplot.PNG")
-```
-]
-
----
-# Why is reproducible science important?
-
-
-.pull-left[
-<br><br>
-- Paper by Reinhart & Rogoff (2010)
-
-- Link between debt and GDP growth
-
-- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
-
-- Used as an argument for politic decisions
-<br><br><br>
-.center[
-CALCULATION ERROR!
-
-ARBITRARY DECISIONS!
-]
-]
-
-
-.pull-right[
-```{r, echo=F}
-knitr::include_graphics("images/rr_article.PNG")
-```
-
-```{r, echo=F, out.width="90%"}
-knitr::include_graphics("images/rr_barplot.PNG")
-```
-]
----
-
-# Advantages of Reproducible Science
-<br><br>
-- Share your results
-
-- Work with collaborators
-
-- Avoid mistakes
-
-- Peer reviewing
-
-
-???
-
-The means have been computed in a weird way.
-
-They didn't use some data that had a high GDP growth with a debt higher than a 100% (we don't know why)
-
-The most important: there was as mistake in on of the excel formula 
-
-After correction: 2.2% instead of the 0%
-
-
---
-
-<br><br>
-.center[
-**All of this using Git/Github/Gitlab**
-]
+# GitHub
 
 ---
 
