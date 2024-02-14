@@ -405,7 +405,11 @@ git checkout <SHA>
 
 **git stash**
 
-- Saves the modifications you made after the last commit without having to make a commit 
+- Saves the modifications you made after the last commit without having to make a commit using `git stash`
+
+- List the stashes using `git stash list`
+
+- You can bring back a specific stash using `git stash apply stash@{n}` 
 
 ---
 class: inverse, center, middle
@@ -457,6 +461,22 @@ git push -u origin main
 
 ---
 
+# Large File Storage
+
+- GitHub has a file size limit: 100 MB
+
+- You can bypass this limit using **Git Large File Storage**
+
+- You need to install the software ([here](https://git-lfs.com/))
+
+- Specify the large files you want to track using `git lfs track images/*.png`
+
+- This will create a file `.gitattributes`
+
+- Next commit you'll do, the tracked large files will be handled in a specific way so you can push the commits online
+
+---
+
 # Clone a github repository
 
 
@@ -481,9 +501,6 @@ git push -u origin main
 ```
 git clone https://github.com/user_name/repo_name.git
 ```
-
-
-
 ---
 
 # Forking a github repository
@@ -504,23 +521,21 @@ git clone https://github.com/user_name/repo_name.git
 
 - A really cool feature of Github is that you can create an HTML page for a repository
 
-
-
 <br>
 
-- For this, go in *Settings > Options > Github Pages*
-
-
-
-<br>
-
-- Select the branch and the folder that contains the .html file
-
-
+- For this, go in *Settings > Options > Github Pages*, select the branch and the folder that contains the .html file
 
 <br>
 
 - Github will automatically look for a file named `index.html` to build from
+
+<br>
+
+- If your html file is not called `index.html`, you can visit the URL provided by Github and add the name of the html file at the end (*e.g.* `URL/my_file.html`) and your website will be there!
+
+<br>
+
+- You also get one website per Github account @ `username.github.io`
 
 ---
 class: inverse, center, middle
