@@ -17,54 +17,7 @@ output:
       titleSlideClass: [top, left, inverse]
 ---
 
-# Version control: what is (G)it?
-
-**Version Control:**
-
-.center[
-*Program responsible for managing changes to computer programs, documents, large 
-websites or other collection of information*
-]
-
---
-
-<br>
-
-- Git was created Linus Torvalds in 2005
-
-- You can backup versions (or "saves", like in a videogame) of a file/directory
-
-- A version is called a **commit**
-
-- Each commit is identified by a unique tag and a message
-
---
-
-.pull-left[
-<br><br>
-**Allows you to come back to a specific commit**
-]
-
-.pull-right[
-```{r, echo=F}
-
-knitr::include_graphics("images/version_control.jpg")
-
-```
-
-]
-
----
-class: inverse, center, middle
-
-# Github
-
-## A powerful tool for reproducible science
-
----
-
 # Why is reproducible science important?
-
 
 .pull-left[
 <br><br>
@@ -74,11 +27,10 @@ class: inverse, center, middle
 
 - When $$debt > 90 \% = \text{GDP growth} \sim 0$$
 
-- Used as an argument for politic decisions
+- Used as an argument for austerity plans
 
 
 ]
-
 
 .pull-right[
 ```{r, echo=F}
@@ -103,7 +55,7 @@ knitr::include_graphics("images/rr_barplot.PNG")
 
 - When $$debt > 90 \% = \text{GDP growth} \sim 0$$
 
-- Used as an argument for politic decisions
+- Used as an argument for austerity plans
 <br><br><br>
 .center[
 CALCULATION ERROR!
@@ -155,12 +107,58 @@ After correction: 2.2% instead of the 0%
 
 <br><br>
 .center[
-**All of this using Git/Github/Gitlab**
+**All of this using Git and Github**
 ]
 
 ---
 
-# Github
+# Version control: what is (G)it?
+
+**Version Control:**
+
+.center[
+*Program responsible for managing changes to computer programs, documents, large 
+websites or other collection of information*
+]
+
+--
+
+<br>
+
+- Git was created Linus Torvalds in 2005
+
+- You can backup versions (or "saves", like in a videogame) of a file/directory
+
+- A version is called a **commit**
+
+- Each commit is identified by a unique tag and a message
+
+--
+
+.pull-left[
+<br><br>
+**Allows you to come back to a specific commit**
+]
+
+.pull-right[
+```{r, echo=F}
+
+knitr::include_graphics("images/version_control.jpg")
+
+```
+
+]
+
+---
+class: inverse, center, middle
+
+# GitHub
+
+## A powerful tool for reproducible science
+
+---
+
+# GitHub
 
 - **Online platform**: this is (just) the online version of Git. If you want to understand Github, you need first to understand Git
 
@@ -341,7 +339,7 @@ git reflog
 
 ```
 
-You'll see the SHA (Simple Hashing Algorithm = unique id of your commit), the author, date/time, commit message
+You will see the **SHA** (Simple Hashing Algorithm = unique id of your commit), the author, date/time, commit message
 
 --
 
