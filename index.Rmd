@@ -2,8 +2,8 @@
 title: "Introduction to Reproducible Science"
 subtitle: "Version Control using Git and Github"
 author: "<br><br><br><br>François Leroy"
-institute: "Czech Univeristy of Life Sciences<br>Prague"
-# date: "2016/12/12 (updated: `r Sys.Date()`)"
+institute: "Mikrobiologický ústav<br>Prague"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     self_contained: true  ## otherwise you need the entire folder to see the slides correctly
@@ -20,14 +20,18 @@ output:
 # Why is reproducible science important?
 
 .pull-left[
-<br><br>
-- Paper by Reinhart & Rogoff (2010)
 
-- Link between debt and GDP growth
+- Paper by **Harvard economists Reinhart and Rogoff** (2010)
 
-- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
+- Studied **20 advanced economies** over **1946–2009**
+
+- Their headline claim:
+  
+  > When public debt exceeds 90% of GDP, average economic growth is approximately 0%.
 
 - Used as an argument for austerity plans
+
+- Can this result be reproduced?
 
 
 ]
@@ -44,25 +48,29 @@ knitr::include_graphics("images/rr_barplot.PNG")
 
 ---
 
-# Why is reproducible science important?
+# Reproducing the result
 
 
 .pull-left[
-<br><br>
-- Paper by Reinhart & Rogoff (2010)
 
-- Link between debt and GDP growth
+- In 2013, Thomas Herndon, a **PhD student** at the University of Massachusetts Amherst, tried to reproduce the result for an econometrics assignment.
 
-- When $$debt > 90 \% = \text{GDP growth} \sim 0$$
+- Working with economist Michael Ash, he requested the original spreadsheet from Reinhart and Rogoff.
 
-- Used as an argument for austerity plans
+- Checking the spreadsheet revealed:
+
+  - a coding error,
+  - omitted observations, and
+  - an unconventional weighting method.
+
+- The corrected average growth rate above 90% debt was **2.2%**, not approximately **0%**.
 <br><br><br>
 .center[
-CALCULATION ERROR!
+REPRODUCTION FOUND THE PROBLEM!
 
-ARBITRARY DECISIONS!
+THE ANALYSIS COULD BE CHECKED!
 ]
-]
+] 
 
 
 .pull-right[
@@ -94,13 +102,13 @@ knitr::include_graphics("images/rr_barplot.PNG")
 
 ???
 
-The means have been computed in a weird way.
+The means had been computed in an unusual way.
 
-They didn't use some data that had a high GDP growth with a debt higher than a 100% (we don't know why)
+Some available observations were omitted.
 
-The most important: there was as mistake in on of the excel formula 
+Most importantly, there was a coding error in the spreadsheet.
 
-After correction: 2.2% instead of the 0%
+After correction, the average was 2.2% rather than approximately 0%.
 
 
 --
@@ -628,5 +636,3 @@ git config --global user.email "address@domain"
 git config --global --list
 
 ```
-
-
