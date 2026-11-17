@@ -85,20 +85,16 @@ knitr::include_graphics("images/rr_barplot.PNG")
 
 ---
 
-# Pros of Reproducible Science
+# What this example teaches us
 <br><br>
 
-- **Transparency**: data, code and methods available allow verification
+- **Published results can contain errors.**
 
-- **Quality assurance**: identification and correction make results more reliable
+- **Reproducibility makes those errors discoverable.**
 
-- **Facilitate collaborations**: see what are colleagues doing 
+- Sharing data, code, and analysis decisions makes results verifiable.
 
-- **Peer review**
-
-- **Educational value**
-
-- **Enhanced public trust**
+- A record of changes helps researchers understand, correct, and build on previous work.
 
 ???
 
@@ -115,14 +111,14 @@ After correction, the average was 2.2% rather than approximately 0%.
 
 <br><br>
 .center[
-**All of this using Git and Github**
+**Git and GitHub help us preserve and share this history.**
 ]
 
 ---
 
 # Version control: what is (G)it?
 
-**Version Control:**
+**Version control:**
 
 .center[
 *Program responsible for managing changes to computer programs, documents, large 
@@ -131,15 +127,13 @@ websites or other collection of information*
 
 --
 
-<br>
+- Git was created by Linus Torvalds in 2005 to help develop the Linux kernel
 
-- Git was created Linus Torvalds in 2005
+- Git records snapshots of your files, so you can inspect or restore earlier versions
 
-- You can backup versions (or "saves", like in a videogame) of a file/directory
+- A snapshot is called a **commit**
 
-- A version is called a **commit**
-
-- Each commit is identified by a unique tag and a message
+- Each commit has a unique identifier (hash) and usually a message
 
 --
 
@@ -160,27 +154,23 @@ knitr::include_graphics("images/version_control.jpg")
 ---
 class: inverse, center, middle
 
-# GitHub
+# Reproducibility needs collaboration
 
-## A powerful tool for reproducible science
+## GitHub helps us share and review our work
 
 ---
 
-# GitHub
+# Git and GitHub
 
-- **Online platform**: this is (just) the online version of Git. If you want to understand Github, you need first to understand Git
+- **Git** runs on your computer and records the history of your project
 
-- **Repository hosting**: you can store and manage your files and their versions from any device
+- **GitHub** is an online platform for hosting Git repositories
 
-- **Collaborative features**: people can suggest modifications of your code (pull request)
+- GitHub lets you share your repository and collaborate with others
 
-- **Issues tracking**
+- It provides repository hosting, pull requests, issues, code review, and project websites (GitHub pages)
 
-- **Branching and merging between collaborators**
-
-- **Code review**
-
-- **Github pages**: create and host your website directly from a repository
+- Git and GitHub work together, but they are not the same tool
 
 ---
 class: inverse, center, middle
@@ -192,25 +182,25 @@ class: inverse, center, middle
 
 # Initialize your repository
 
-<br>
 - **Repository** ("repo") = directory that is version-controlled by Git, with files and history of their changes
 
 --
 
 <br>
-- This is the very first necessary step
+- If you are starting from an existing GitHub repository, clone it:
 
---
+``` 
+
+git clone <repository-url>
+
+```
 
 <br>
-- For this, use `git init` in your Command Line Interface
-
---
+- If you are starting from an existing local folder, initialize it: `git init`
 
 <br>
 - Now, a hidden directory `.git` can be found at the root of your project
 
---
 
 <br>
 .center[
@@ -275,7 +265,7 @@ knitr::include_graphics("images/branch.png")
 
 .pull-right[
 
-- At first, you will just see the branch `main`
+- A new repository commonly starts on a branch called `main`
 
 ``` 
 git branch 
@@ -288,7 +278,7 @@ git branch
 git branch new_branch_name
 ```
 
-- And switch between branches
+- And switch between existing branches
 
 
 ``` 
@@ -322,11 +312,11 @@ From the `main` branch, use:
 git merge new_branch
 ```
 
-This combines changes from both branches into a new commit
+This combines changes from both branches. If necessary, Git creates a merge commit.
 
 - **Conflicts**: if a file is modified on two branches, Git can't decide which change to keep when merging, causing a **conflict**. 
 
-To resolve conflicts, manually edit the conflicted file, stage it with `git add`, continue the merge with `git merge --continue`, and commit the merge.
+To resolve conflicts, manually edit the conflicted file, stage it with `git add`, and run `git merge --continue`.
 
 ]
 
@@ -334,8 +324,6 @@ To resolve conflicts, manually edit the conflicted file, stage it with `git add`
 ---
 
 # Check your commits and changes
-
-<br><br>
 
 - List the commits using:
 
@@ -347,11 +335,13 @@ git reflog
 
 ```
 
-You will see the **SHA** (Simple Hashing Algorithm = unique id of your commit), the author, date/time, commit message
+You will see the commit **hash** (a unique identifier), the author, date/time, and commit message.
 
 --
 
-<br><br>
+- `git reflog` shows where `HEAD` has recently pointed, which can help recover from mistakes.
+
+--
 
 - See the changes of a commit:
 
@@ -359,42 +349,54 @@ You will see the **SHA** (Simple Hashing Algorithm = unique id of your commit), 
 git show <SHA>
 ```
 
+--
+
+- See the changes that are not committed:
+
+```
+git diff
+```
 
 ---
 
-# Undo your commits
+# Undoing changes and commits
 
 .center[
-**There are different ways to do it but the most common one is reset**
+**Choose the command according to what you want to undo**
 ]
 
 --
 
-- `git reset` is dangerous: you go back to the desired commit and "erase" all the commit created since 
+- Discard unstaged changes in a file:
 
 ```
+git restore <file>
+```
 
+
+- Unstage a file without discarding its changes:
+
+```
+git restore --staged <file>
+```
+
+
+- `git reset` moves the current branch to another commit. It rewrites local history:
+
+```
 git reset --hard <SHA>
-
 ```
 
-However, you can bypass this by using:
+`--hard` also replaces the working files and can discard uncommitted changes.
+
+- Advanced recovery/editing workflow:
 
 ```
-git reset --hard <previous-SHA>
-git reset --soft <last-SHA>
+git reset --hard <earlier-SHA>
+git reset --soft <later-SHA>
 ```
 
---
-
-- `git checkout` allows to create a temporary branch with the commit wanted
-
-
-``` 
-
-git checkout <SHA>
-
-```
+This restores the earlier files, then moves `HEAD` back while keeping the intervening changes staged.
 
 ---
 
@@ -411,11 +413,11 @@ git checkout <SHA>
 
 **git stash**
 
-- Saves the modifications you made after the last commit without having to make a commit using `git stash`
+- Temporarily saves uncommitted modifications using `git stash`
 
 - List the stashes using `git stash list`
 
-- You can bring back a specific stash using `git stash apply stash@{n}` 
+- You can bring back a specific stash using `git stash apply stash@{n}`
 
 ---
 class: inverse, center, middle
@@ -430,10 +432,11 @@ class: inverse, center, middle
 
 .pull-left[
 
-- Create a repository on Github
+- Create an empty repository on GitHub
 
 <br><br>
-- Click on the clipboad to copy the remote
+
+- Copy the repository URL
 
 ]
 
@@ -460,9 +463,11 @@ git push -u origin main
 --
 <br>
 .center[
-**From now on, you will be able to publish your commits using** `git push`
+**From now on, you can publish your local commits using** `git push`
 
-**Also, you can dowload the modifications that are published on Github by using** `git pull`
+**Use** `git fetch` **to download remote commits without changing your files.**
+
+**Use** `git pull` **to fetch and integrate remote changes into your current branch.**
 ]
 
 ---
@@ -483,7 +488,7 @@ git push -u origin main
 
 ---
 
-# Clone a github repository
+# Clone a GitHub repository
 
 
 .center[
@@ -494,11 +499,11 @@ git push -u origin main
 
 <br><br>
 
-- Go on your favorite Github repository
+- Go to a GitHub repository
 
 <br><br>
 
-- Copy the URL of this repository
+- Copy its URL
 
 <br><br>
 
