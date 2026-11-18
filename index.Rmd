@@ -434,7 +434,7 @@ class: inverse, center, middle
 
 - Create an empty repository on GitHub
 
-<br><br>
+<br>
 
 - Copy the repository URL
 
@@ -457,11 +457,12 @@ knitr::include_graphics(path = "images/repo-create.png")
 ```
 git remote add origin https://github.com/user_name/repo_name.git
 git branch -M main
+git remote -v
 git push -u origin main
 ```
 
 --
-<br>
+
 .center[
 **From now on, you can publish your local commits using** `git push`
 
@@ -470,9 +471,13 @@ git push -u origin main
 **Use** `git pull` **to fetch and integrate remote changes into your current branch.**
 ]
 
+--
+
+GitHub may ask you to authenticate using a browser login, personal access token, or SSH key.
+
 ---
 
-# Large File Storage
+# Optional: Large File Storage
 
 - GitHub has a file size limit: 100 MB
 
@@ -514,46 +519,46 @@ git clone https://github.com/user_name/repo_name.git
 ```
 ---
 
-# Forking a github repository
+# Forking a GitHub repository
 
-- A fork is a personal copy of a github repository
-
-<br><br>
-
-- It create a new independent repository that you can modify as much as you want, without modifying the original repo
+- A fork is your GitHub copy of someone else's repository
 
 <br><br>
 
-- Also, you can ask to merge your modifications to the original repo using a `pull request`
+- You can modify your fork without changing the original repository
+
+<br><br>
+
+- You can propose your changes to the original repository using a `pull request`
 
 ---
 
-# Github pages
+# GitHub Pages
 
-- A really cool feature of Github is that you can create an HTML page for a repository
-
-<br>
-
-- For this, go in *Settings > Options > Github Pages*, select the branch and the folder that contains the .html file
+- GitHub Pages publishes a website from a repository
 
 <br>
 
-- Github will automatically look for a file named `index.html` to build from
+- Go to *Settings > Options > GitHub Pages* and select the branch and folder containing the site files
 
 <br>
 
-- If your html file is not called `index.html`, you can visit the URL provided by Github and add the name of the html file at the end (*e.g.* `URL/my_file.html`) and your website will be there!
+- GitHub Pages normally uses `index.html` as the site's entry point
 
 <br>
 
-- You also get one website per Github account @ `username.github.io`
+- If your HTML file has another name, use the URL provided by GitHub and append the filename
+
+<br>
+
+- You can also host a user site at `username.github.io`
 
 ---
 class: inverse, center, middle
 
 # Friendly user applications
 
-### [<ins>Github desktop</ins>](https://desktop.github.com/) 
+### [<ins>GitHub Desktop</ins>](https://desktop.github.com/) 
 
 ### [<ins>Visual Studio Code</ins>](https://code.visualstudio.com/)
 
